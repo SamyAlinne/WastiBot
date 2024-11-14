@@ -100,7 +100,6 @@
     color: var(--default-color);
     background-color: var(--footer-color);
     background: linear-gradient(111deg, rgba(34,61,70,1) 0%, rgba(118,153,173,1) 61%, rgba(179,194,201,1) 100%);
-
     font-size: 14px;
     position: relative;
   }
@@ -122,7 +121,6 @@
   }
   
   .footer .credits {
-    margin-top: 6px;
     font-size: 13px;
   }
   
@@ -578,9 +576,6 @@
 }
 .text-center {
     text-align: center;
-}
-.mt-4 {
-    margin-top: 1.5rem; 
 }
 .px-1 {
     padding-left: 0.25rem; 
