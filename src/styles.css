@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+/*--------------------------------------------------------------
+# Font & Color Variables
+--------------------------------------------------------------*/
+/* Fonts */
+:root {
+    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --heading-font: "Raleway", sans-serif;
+    --nav-font: "Poppins", sans-serif;
+  }
+  
+  :root {
+    --background-color: rgb(244, 249, 251);
+    --default-color: #fff; 
+    --heading-color: #283d50; 
+    --accent-color: rgb(179,194,201);
+    --surface-color: #ffffff; 
+    --contrast-color: #ffffff; 
+    --footer-color: rgb(34,61,70);
+
+  }
+  
+  :root {
+    --nav-color: #024286; 
+    --nav-hover-color: #007bff; 
+    --nav-mobile-background-color: #ffffff; 
+    --nav-dropdown-background-color: #ffffff; 
+    --nav-dropdown-color: #444444; 
+    --nav-dropdown-hover-color: #007bff;
+  }
+  
+  /* Smooth scroll */
+  :root {
+    scroll-behavior: smooth;
+  }
+  
+  /*--------------------------------------------------------------
+  # General Styling & Shared Classes
+  --------------------------------------------------------------*/
+  body {
+    width: 100%;
+    color: var(--default-color);
+    background-color: var(--background-color);
+    font-family: var(--default-font);
+    margin: 0;
+  }
+  
+  a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  a:hover {
+    color: color-mix(in srgb, var(--accent-color), transparent 25%);
+    text-decoration: none;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--heading-color);
+    font-family: var(--heading-font);
+  }
+  
+ 
