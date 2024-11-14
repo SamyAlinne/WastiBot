@@ -16,8 +16,11 @@
     --heading-color: #283d50; 
     --accent-color: rgb(179,194,201);
     --surface-color: #ffffff; 
-    --contrast-color: #ffffff; 
+    --contrast-color: #223d46; 
     --footer-color: rgb(34,61,70);
+    --focus-color:#7699ad;
+    /*--message1-color:#223d46;*/
+    --messagebackground-color:#7699ad;
 
   }
   
