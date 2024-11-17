@@ -19,9 +19,10 @@
     --contrast-color: #223d46; 
     --footer-color: rgb(34,61,70);
     --focus-color:#7699ad;
-    /*--message1-color:#223d46;*/
     --messagebackground-color:#7699ad;
-
+    --amarillo-oscuro: #d09500;
+    --oro-highlight: #F0BB7A;
+    --oro-shadow: #DE9945;
   }
   
   :root {
