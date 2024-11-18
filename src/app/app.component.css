@@ -490,6 +490,85 @@
   }
 }
 
+/* Contenedor de copos de nieve */
+#snowflakes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Para que no interfiera con otros elementos */
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Copos de nieve */
+#snowflakes::before,
+#snowflakes::after {
+  content: "";
+  position: absolute;
+  top: -100px; 
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  box-shadow: 
+    0 0 2px rgba(34, 61, 70, 0.8), 
+    0 -50px 3px rgba(34, 61, 70, 0.7),
+    -100px -200px 2px rgba(34, 61, 70, 0.6),
+    200px -300px 4px rgba(34, 61, 70, 0.9),
+    400px -150px 1px rgba(34, 61, 70, 0.5),
+    -200px -400px 3px rgba(34, 61, 70, 0.8),
+    150px -600px 4px rgba(34, 61, 70, 0.7),
+    -300px -50px 2px rgba(34, 61, 70, 0.6),
+    300px -200px 1px rgba(34, 61, 70, 0.4),
+    100px -700px 3px rgba(34, 61, 70, 0.8),
+    -400px -250px 2px rgba(34, 61, 70, 0.6),
+    500px -500px 4px rgba(34, 61, 70, 0.9),
+    -150px -800px 3px rgba(34, 61, 70, 0.7),
+    250px -1000px 4px rgba(34, 61, 70, 0.5),
+    -500px -900px 1px rgba(34, 61, 70, 0.8),
+    350px -1100px 2px rgba(34, 61, 70, 0.6),
+    -250px -1200px 3px rgba(34, 61, 70, 0.4),
+    600px -50px 3px rgba(34, 61, 70, 0.7),
+    -350px -500px 1px rgba(34, 61, 70, 0.6),
+    450px -900px 4px rgba(34, 61, 70, 0.8),
+    -200px -800px 2px rgba(34, 61, 70, 0.5),
+    550px -1100px 3px rgba(34, 61, 70, 0.7),
+    -100px -1300px 1px rgba(34, 61, 70, 0.6),
+    400px -1500px 3px rgba(34, 61, 70, 0.8), 
+    -150px -1700px 2px rgba(34, 61, 70, 0.5),
+    600px -1800px 4px rgba(34, 61, 70, 0.6),
+    -300px -1900px 3px rgba(34, 61, 70, 0.7),
+    200px -2100px 2px rgba(34, 61, 70, 0.5),
+    -500px -2200px 1px rgba(34, 61, 70, 0.8),
+    100px -2500px 2px rgba(124, 157, 176, 0.8),
+    -150px -2200px 3px rgba(124, 157, 176, 0.7),
+    300px -2700px 1px rgba(124, 157, 176, 0.6),
+    -200px -2500px 3px rgba(198, 213, 221, 0.5),
+    500px -3000px 2px rgba(198, 213, 221, 0.6),
+    -100px -3100px 1px rgba(198, 213, 221, 0.4);
+  animation: snowfall 4s linear infinite;
+}
+
+
+/* Animación de caída de nieve */
+@keyframes snowfall {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-200px) translateY(100vh);
+    opacity: 0.5;
+  }
+}
+
+#snowflakes::after {
+  animation-delay: 1s; /* Para mayor variación */
+}
+
+
 /*--------------------------------------------------------------
 # Global Page Titles & Breadcrumbs
 --------------------------------------------------------------*/
