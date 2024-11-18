@@ -843,7 +843,7 @@ section,
 }
 
 .chat p {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
   margin: 5px 0 10px 0;
   font-size: 20px;
   font-weight: 400;
