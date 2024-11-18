@@ -77,7 +77,8 @@
     background-size: 300%;
     padding: 5px 25px;
     font-family: var(--nav-font);
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 15px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -90,7 +91,6 @@
     box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-size: 12px;
     transition: all 0.5s ease;
     opacity: 0.8;
     filter: brightness(0.8);
@@ -553,7 +553,7 @@
 #snowflakes::after {
   content: "";
   position: absolute;
-  top: -100px;
+  top: -10px;
   left: 50%;
   width: 10px;
   height: 10px;
@@ -607,9 +607,130 @@
   }
 }
 
-#snowflakes::after {
+#snowflakes::after,
+snowflakes2::after  {
   animation-delay: 1s; /* Para mayor variación */
 }
+
+/* Contenedor de copos de nieve */
+#snowflakes2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Para que no interfiera con otros elementos */
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Copos de nieve */
+#snowflakes2::before,
+#snowflakes2::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  box-shadow:   0 0 2px rgba(255, 255, 255, 0.8), 
+  0 -50px 3px rgba(221, 232, 237, 0.7),
+  -100px -200px 2px rgba(255, 255, 255, 0.6),
+  200px -300px 4px rgba(221, 232, 237, 0.9),
+  400px -150px 1px rgba(255, 255, 255, 0.5),
+  -200px -400px 3px rgba(221, 232, 237, 0.8),
+  150px -600px 4px rgba(255, 255, 255, 0.7),
+  -300px -50px 2px rgba(221, 232, 237, 0.6),
+  300px -200px 1px rgba(255, 255, 255, 0.4),
+  100px -700px 3px rgba(221, 232, 237, 0.8),
+  -400px -250px 2px rgba(255, 255, 255, 0.6),
+  500px -500px 4px rgba(221, 232, 237, 0.9),
+  -150px -800px 3px rgba(255, 255, 255, 0.7),
+  250px -1000px 4px rgba(221, 232, 237, 0.5),
+  -500px -900px 1px rgba(255, 255, 255, 0.8),
+  350px -1100px 2px rgba(221, 232, 237, 0.6),
+  -250px -1200px 3px rgba(255, 255, 255, 0.4),
+  600px -50px 3px rgba(221, 232, 237, 0.7),
+  -350px -500px 1px rgba(255, 255, 255, 0.6),
+  450px -900px 4px rgba(221, 232, 237, 0.8),
+  -200px -800px 2px rgba(255, 255, 255, 0.5),
+  550px -1100px 3px rgba(221, 232, 237, 0.7),
+  -100px -1300px 1px rgba(255, 255, 255, 0.6),
+  400px -1500px 3px rgba(221, 232, 237, 0.8),
+  -150px -1700px 2px rgba(255, 255, 255, 0.5),
+  600px -1800px 4px rgba(221, 232, 237, 0.6),
+  -300px -1900px 3px rgba(255, 255, 255, 0.7),
+  200px -2100px 2px rgba(221, 232, 237, 0.5),
+  -500px -2200px 1px rgba(255, 255, 255, 0.8),
+  100px -2500px 2px rgba(255, 255, 255, 0.8),
+  -150px -2200px 3px rgba(221, 232, 237, 0.7),
+  300px -2700px 1px rgba(221, 232, 237, 0.6),
+  -200px -2500px 3px rgba(255, 255, 255, 0.5),
+  500px -3000px 2px rgba(221, 232, 237, 0.6),
+  -100px -3100px 1px rgba(255, 255, 255, 0.4);
+  animation: snowfall2 5s linear infinite;
+}
+
+/* Animación de caída fluida */
+@keyframes snowfall2 {
+  0% {
+    transform: translateY(10vh); /* Comienzan fuera del viewport */
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh); /* Recorrido completo */
+    opacity: 0.5;
+  }
+}
+
+/* Copos de nieve 3 */
+#snowflakes3::before,
+#snowflakes3::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  box-shadow:   0 0 3px rgba(255, 255, 255, 0.9), 
+  -150px -60px 2px rgba(221, 232, 237, 0.8),
+  100px -180px 3px rgba(255, 255, 255, 0.7),
+  -250px -300px 4px rgba(221, 232, 237, 0.9),
+  350px -450px 1px rgba(255, 255, 255, 0.5),
+  -400px -500px 2px rgba(221, 232, 237, 0.6),
+  200px -600px 4px rgba(255, 255, 255, 0.8),
+  -50px -700px 3px rgba(221, 232, 237, 0.7),
+  450px -800px 2px rgba(255, 255, 255, 0.5),
+  -300px -900px 4px rgba(221, 232, 237, 0.9),
+  100px -1000px 2px rgba(255, 255, 255, 0.6),
+  -150px -1100px 3px rgba(255, 255, 255, 0.4),
+  500px -1200px 1px rgba(221, 232, 237, 0.7),
+  -250px -1300px 4px rgba(255, 255, 255, 0.8),
+  300px -1400px 2px rgba(221, 232, 237, 0.5),
+  -450px -1500px 3px rgba(255, 255, 255, 0.6);
+  animation: snowfall3 7s ease-in-out infinite;
+}
+
+/* Nueva animación snowfall3 */
+@keyframes snowfall3 {
+  0% {
+    transform: translateY(15vh); /* Comienzan más arriba */
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9; /* Más brillante a mitad del recorrido */
+  }
+  100% {
+    transform: translateY(120vh); /* Terminan más abajo */
+    opacity: 0.4;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Global Page Titles & Breadcrumbs
@@ -766,6 +887,7 @@ section,
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  z-index: 99999;
 }
 
 .nav-bar,
