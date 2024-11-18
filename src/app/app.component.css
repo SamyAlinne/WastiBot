@@ -62,34 +62,80 @@
 
   .navmenu a,
   .navmenu a:focus {
-    color: var(--nav-color);
-    padding: 18px 15px;
-    font-size: 16px;
+    color: var(--nav-text-color);
+    background: linear-gradient(
+      15deg,
+      rgba(255, 215, 0, 1) 0%,
+      /* Dorado brillante */ rgba(255, 223, 73, 1) 15%,
+      /* Amarillo cálido */ rgba(255, 191, 0, 1) 30%,
+      /* Naranja dorado */ rgba(218, 165, 32, 1) 45%,
+      /* Oro viejo */ rgba(184, 134, 11, 1) 60%,
+      /* Oro quemado */ rgba(218, 165, 32, 1) 75%,
+      /* Oro viejo */ rgba(255, 191, 0, 1) 90%,
+      /* Naranja dorado */ rgba(255, 215, 0, 1) 100% /* Dorado brillante */
+    );
+    background-size: 300%;
+    padding: 5px 25px;
     font-family: var(--nav-font);
-    font-weight: 400;
-    display: flex;
+    font-weight: 600;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     white-space: nowrap;
-    transition: 0.3s;
-  }
-
-  .navmenu a i,
-  .navmenu a:focus i {
+    text-decoration: none;
+    gap: 0.4rem;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     font-size: 12px;
-    line-height: 0;
-    margin-left: 5px;
-    transition: 0.3s;
+    transition: all 0.5s ease;
+    opacity: 0.8;
+    filter: brightness(0.8);
   }
 
-  .navmenu li:last-child a {
-    padding-right: 0;
+  .navmenu a:hover,
+  .navmenu a:focus {
+    color: var(--nav-hover-text-color);
+    background-size: 320%;
+    background-position: right center;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    opacity: 1;
+    filter: brightness(1);
   }
 
-  .navmenu li:hover > a,
-  .navmenu .active,
-  .navmenu .active:focus {
-    color: var(--nav-hover-color);
+  .navmenu:hover svg,
+  .navmenu:active svg {
+    fill: var(--nav-hover-fill-color);
+  }
+
+  .navmenu svg {
+    width: 23px;
+    fill: var(--nav-fill-color);
+    transition: 0.3s ease;
+  }
+
+  .navmenu a:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+    opacity: 1;
+    background: linear-gradient(
+      15deg,
+      rgba(204, 172, 0, 1) 0%,
+      /* Dorado brillante (oscurecido) */ rgba(204, 179, 58, 1) 15%,
+      /* Amarillo cálido (oscurecido) */ rgba(204, 153, 0, 1) 30%,
+      /* Naranja dorado (oscurecido) */ rgba(175, 132, 25, 1) 45%,
+      /* Oro viejo (oscurecido) */ rgba(147, 107, 9, 1) 60%,
+      /* Oro quemado (oscurecido) */ rgba(175, 132, 25, 1) 75%,
+      /* Oro viejo (oscurecido) */ rgba(204, 153, 0, 1) 90%,
+      /* Naranja dorado (oscurecido) */ rgba(204, 172, 0, 1) 100%
+        /* Dorado brillante (oscurecido) */
+    );
+    background-size: 320%;
+    background-position: right center;
   }
 }
 /*--------------------------------------------------------------
@@ -507,14 +553,12 @@
 #snowflakes::after {
   content: "";
   position: absolute;
-  top: -100px; 
+  top: -100px;
   left: 50%;
   width: 10px;
   height: 10px;
   background: transparent;
-  box-shadow: 
-    0 0 2px rgba(34, 61, 70, 0.8), 
-    0 -50px 3px rgba(34, 61, 70, 0.7),
+  box-shadow: 0 0 2px rgba(34, 61, 70, 0.8), 0 -50px 3px rgba(34, 61, 70, 0.7),
     -100px -200px 2px rgba(34, 61, 70, 0.6),
     200px -300px 4px rgba(34, 61, 70, 0.9),
     400px -150px 1px rgba(34, 61, 70, 0.5),
@@ -536,7 +580,7 @@
     -200px -800px 2px rgba(34, 61, 70, 0.5),
     550px -1100px 3px rgba(34, 61, 70, 0.7),
     -100px -1300px 1px rgba(34, 61, 70, 0.6),
-    400px -1500px 3px rgba(34, 61, 70, 0.8), 
+    400px -1500px 3px rgba(34, 61, 70, 0.8),
     -150px -1700px 2px rgba(34, 61, 70, 0.5),
     600px -1800px 4px rgba(34, 61, 70, 0.6),
     -300px -1900px 3px rgba(34, 61, 70, 0.7),
@@ -550,7 +594,6 @@
     -100px -3100px 1px rgba(198, 213, 221, 0.4);
   animation: snowfall 4s linear infinite;
 }
-
 
 /* Animación de caída de nieve */
 @keyframes snowfall {
@@ -567,7 +610,6 @@
 #snowflakes::after {
   animation-delay: 1s; /* Para mayor variación */
 }
-
 
 /*--------------------------------------------------------------
 # Global Page Titles & Breadcrumbs
@@ -712,9 +754,8 @@ section,
 --------------------------------------------------------------*/
 .container {
   width: 60%;
-  margin: auto; /* Centrar la ventana de chat en la página */
+  margin: auto;
   height: 100%;
-  background: rgb(224, 231, 235);
   background: linear-gradient(
     111deg,
     rgba(224, 231, 235, 1) 0%,
@@ -752,32 +793,6 @@ section,
   white-space: nowrap;
   margin-left: 10px;
   user-select: none;
-}
-
-.close {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-}
-
-.line {
-  position: absolute;
-  width: 20px;
-  height: 3px;
-  background-color: #6b6c7b;
-  border-radius: 30px;
-}
-
-.line.one {
-  transform: rotate(45deg);
-}
-
-.line.two {
-  transform: rotate(135deg);
 }
 
 .messages-area {
@@ -848,7 +863,6 @@ section,
 .input-container button {
   flex-basis: 25%;
   padding: 1rem;
-  background: rgb(221, 232, 237);
   background: linear-gradient(
     150deg,
     rgba(221, 232, 237, 1) 0%,
@@ -867,7 +881,6 @@ section,
 }
 
 .input-container button:hover {
-  background: rgb(221, 232, 237);
   background: linear-gradient(
     150deg,
     rgba(221, 232, 237, 1) 50%,

@@ -26,12 +26,10 @@
   }
   
   :root {
-    --nav-color: #024286; 
-    --nav-hover-color: #007bff; 
-    --nav-mobile-background-color: #ffffff; 
-    --nav-dropdown-background-color: #ffffff; 
-    --nav-dropdown-color: #444444; 
-    --nav-dropdown-hover-color: #007bff;
+    --nav-text-color: #594000; 
+    --nav-hover-text-color: #ffffff; 
+    --nav-fill-color: #594000; 
+    --nav-hover-fill-color:#ffffff; 
   }
   
   /* Smooth scroll */
