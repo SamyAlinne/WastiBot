@@ -933,6 +933,7 @@ section,
   padding: 10px;
   border-radius: 10px;
   color: white;
+  font-weight: 600;
   font-size: 24px;
   margin-top: 5px;
   box-shadow: 5px 5px 15px #0e10134b;
@@ -940,13 +941,13 @@ section,
 
 .sender {
   align-self: flex-start;
-  background-color: #3b82f6;
+  background-color: var(--amarillo-oscuro);
   border-radius: 10px 10px 10px 0;
 }
 
 .receiver {
   align-self: flex-end;
-  background-color: #4b5563;
+  background-color: var(--background-message-sender);
   border-radius: 10px 10px 0 10px;
 }
 
