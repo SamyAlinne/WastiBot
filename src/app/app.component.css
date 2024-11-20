@@ -20,7 +20,7 @@
 }
 
 .header .logo img {
-  max-height: 26px;
+  max-height: 50px;
   margin-right: 8px;
 }
 
@@ -287,7 +287,7 @@
   transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
 }
 
-#animacionInicial img {
+#animacionInicial object {
   width: 300px;
 }
 #animacionInicial.visible {
