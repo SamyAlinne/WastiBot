@@ -142,6 +142,7 @@
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
+  font-family: var(--christmas-font);
   color: var(--default-color);
   background-color: var(--footer-color);
   background: linear-gradient(
@@ -150,25 +151,23 @@
     rgba(118, 153, 173, 1) 61%,
     rgba(179, 194, 201, 1) 100%
   );
-  font-size: 14px;
+  font-size: 24px;
   position: relative;
-}
-
-.footer h4 {
-  font-size: 16px;
-  font-weight: bold;
-  position: relative;
-  padding-bottom: 12px;
 }
 
 .footer .copyright {
-  padding: 25px 0;
+  padding: 5px 0 50px 0;
   border-top: 1px solid
     color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .footer .copyright p {
   margin-bottom: 0;
+}
+
+.footer .copyright strong {
+  font-size: 28px;
+  font-family: var(--default-font);
 }
 
 .footer .credits {
@@ -182,7 +181,6 @@
 /*--------------------------------------------------------------
 # Animación Preloader
 --------------------------------------------------------------*/
-
 /* Preloader*/
 #preloader {
   position: fixed;
@@ -317,8 +315,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Poppins", sans-serif; /*Cambiar*/
+  font-family: var(--default-font);
+  transform: scaleX(1.1);
   font-weight: 900;
+}
+
+.keyboard {
+  margin-bottom: 10px;
 }
 
 .key {
@@ -503,6 +506,8 @@
 }
 
 .cursor {
+  font-family: var(--christmas-font);
+  font-weight: 700;
   position: relative;
   color: var(--contrast-color);
   width: 24em;
@@ -825,7 +830,6 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  /*background: url(../assets/hero-bg.png) center bottom no-repeat;*/
   background-size: cover;
 }
 
@@ -1103,4 +1107,8 @@ section,
 .sitename {
   font-size: 1.25rem;
   font-weight: bold;
+}
+
+.sitename span {
+  color: var(--amarillo-oscuro);
 }
