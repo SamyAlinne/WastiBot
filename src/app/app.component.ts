@@ -1,17 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ChatService } from './chat.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, FormsModule, CommonModule, HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ChatService]
 })
 export class AppComponent implements OnInit {
   title = 'WastiBot';
 
   ngOnInit() {
+    this.initializeChat();
+    this.loadTopMovies();
     const preloader = document.querySelector('#preloader');
     const animacionInicial = document.querySelector('#animacionInicial');
     const mainContent = document.querySelector('#main-content') as HTMLElement; // Convertimos explícitamente a HTMLElement
@@ -36,5 +43,55 @@ export class AppComponent implements OnInit {
         }, 4000); // Duración de la animación inicial
       }
     });
+  }
+
+  
+  messages: { role: string, content: string }[] = [];
+  inputMessage = '';
+  topMovies: any[] = [];
+  userName = '';
+  isFirstMessage = true;
+
+  constructor(private chatService: ChatService) {}
+
+  initializeChat() {
+    this.messages.push({ role: 'bot', content: '¡Hola! Soy WastiBot. ¿Cómo te llamas?' });
+  }
+
+  loadTopMovies() {
+    this.chatService.getTopMovies().subscribe(
+      (movies) => {
+        this.topMovies = movies;
+      },
+      (error) => {
+        console.error('Error al cargar las películas:', error);
+      }
+    );
+  }
+
+  sendMessage() {
+    if (this.inputMessage.trim() === '') return;
+
+    this.messages.push({ role: 'user', content: this.inputMessage });
+
+    if (this.isFirstMessage) {
+      this.userName = this.inputMessage;
+      this.chatService.setUserName(this.userName);
+      this.isFirstMessage = false;
+      this.messages.push({ role: 'bot', content: `¡Encantado de conocerte, ${this.userName}! ¿En qué puedo ayudarte hoy?` });
+      this.inputMessage = '';
+      return;
+    }
+    this.chatService.sendMessage(this.inputMessage).subscribe(
+      (response) => {
+        this.messages.push({ role: 'bot', content: response.message });
+      },
+      (error) => {
+        console.error('Error al enviar mensaje:', error);
+        this.messages.push({ role: 'bot', content: 'Lo siento, ha ocurrido un error. Por favor, intenta de nuevo.' });
+      }
+    );
+
+    this.inputMessage = '';
   }
 }
