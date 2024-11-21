@@ -936,6 +936,14 @@ section,
   gap: 10px; 
 }
 
+.bot-message {
+  justify-content: flex-start;
+}
+
+.user-message {
+  justify-content: flex-end;
+}
+
 .wastiFoto {
   border: 4px solid var(--amarillo-oscuro);
   height: 50px;

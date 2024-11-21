@@ -29,18 +29,15 @@
         <div class="nav-bar">
           <a>Chat</a>
         </div>
-        <div class="messages-area">
+        <div class="messages-area" #messagesContainer>
           <ng-container *ngFor="let message of messages; let i = index">
-            <div class="message-wrapper" *ngIf="message.role === 'bot' && i === 0">
-              <object type="image/svg+xml" data="/assets/saludando.svg" class="wastiFoto">
+            <div class="message-wrapper" [ngClass]="{'bot-message': message.role === 'bot', 'user-message': message.role === 'user'}">
+              <object *ngIf="message.role === 'bot'" type="image/svg+xml" data="/assets/saludando.svg" class="wastiFoto" aria-label="WastiBot saludando">
                 Tu navegador no soporta SVG.
               </object>
-              <div class="message sender">
+              <div class="message" [ngClass]="{'sender': message.role === 'bot', 'receiver': message.role === 'user'}">
                 <p>{{ message.content }}</p>
               </div>
-            </div>
-            <div class="message" [ngClass]="{'sender': message.role === 'bot', 'receiver': message.role === 'user'}" *ngIf="!(message.role === 'bot' && i === 0)">
-              <p>{{ message.content }}</p>
             </div>
           </ng-container>
         </div>

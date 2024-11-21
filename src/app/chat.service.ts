@@ -19,20 +19,39 @@ export class ChatService {
     return this.userName;
   }
 
-  sendMessage(message: string): Observable<any> {
+  extractName(message: string): string {
+    // Lista de palabras comunes para ignorar
+    const commonWords = ['me', 'llamo', 'soy', 'mi', 'nombre', 'es', 'hola', 'saludos', 'wasti', 'que', 'tal'];
+    const words = message.toLowerCase().split(/\s+/);
+    
+    // Filtrar palabras comunes y seleccionar la primera palabra restante
+    const potentialName = words.find(word => !commonWords.includes(word));
+    
+    // Capitalizar la primera letra del nombre
+    return potentialName ? potentialName.charAt(0).toUpperCase() + potentialName.slice(1) : '';
+  }
+
+  sendMessage(message: string, isFirstMessage: boolean): Observable<any> {
+
+    if (isFirstMessage) {
+      const extractedName = this.extractName(message);
+      this.setUserName(extractedName);
+      return of({ message: `¡Encantado de conocerte, ${extractedName}! ¿En qué puedo ayudarte hoy con respecto a películas navideñas?` });
+    }
+
     // Respuestas predeterminadas
     const lowerMessage = message.toLowerCase();
     if (lowerMessage.includes('hola') || lowerMessage.includes('buenos días') || lowerMessage.includes('buenas tardes')) {
       return of({ message: `¡Hola ${this.userName}! ¿En qué puedo ayudarte hoy?` });
     }
-    if (lowerMessage.includes('mejor película') || lowerMessage.includes('película favorita')) {
-      return this.http.get(`${this.apiUrl}/movies/best`);
+    /*if (lowerMessage.includes('mejor película') || lowerMessage.includes('película favorita')) {
+      return this.http.post(`${this.apiUrl}/movies/chat`);
     }
     if (lowerMessage.includes('recomendar') || lowerMessage.includes('sugerir')) {
       return this.http.get(`${this.apiUrl}/movies/random`);
-    }
+    }*/
     // Si no hay respuesta predeterminada, enviamos la consulta al backend
-    return this.http.post(`${this.apiUrl}/chat`, { message, userName: this.userName });
+    return this.http.post(`${this.apiUrl}/chat`, { message });
   }
 
   getTopMovies(): Observable<any> {

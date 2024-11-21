@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ChatService } from './chat.service';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./app.component.css'],
   providers: [ChatService]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewChecked {
+  @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
+
   title = 'WastiBot';
 
   ngOnInit() {
@@ -54,6 +56,10 @@ export class AppComponent implements OnInit {
 
   constructor(private chatService: ChatService) {}
 
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
   initializeChat() {
     this.messages.push({ role: 'bot', content: '¡Hola! Soy WastiBot. ¿Cómo te llamas?' });
   }
@@ -74,24 +80,29 @@ export class AppComponent implements OnInit {
 
     this.messages.push({ role: 'user', content: this.inputMessage });
 
-    if (this.isFirstMessage) {
-      this.userName = this.inputMessage;
-      this.chatService.setUserName(this.userName);
-      this.isFirstMessage = false;
-      this.messages.push({ role: 'bot', content: `¡Encantado de conocerte, ${this.userName}! ¿En qué puedo ayudarte hoy?` });
-      this.inputMessage = '';
-      return;
-    }
-    this.chatService.sendMessage(this.inputMessage).subscribe(
+    this.chatService.sendMessage(this.inputMessage, this.isFirstMessage).subscribe(
       (response) => {
         this.messages.push({ role: 'bot', content: response.message });
+        if (this.isFirstMessage) {
+          this.isFirstMessage = false;
+        }
+        this.scrollToBottom();
       },
       (error) => {
         console.error('Error al enviar mensaje:', error);
         this.messages.push({ role: 'bot', content: 'Lo siento, ha ocurrido un error. Por favor, intenta de nuevo.' });
+        this.scrollToBottom();
       }
     );
 
     this.inputMessage = '';
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
+    } catch(err) { 
+      console.error('Error al hacer scroll:', err);
+    }
   }
 }
