@@ -87,6 +87,16 @@ export class AppComponent implements OnInit, AfterViewChecked {
           this.isFirstMessage = false;
         }
         this.scrollToBottom();
+
+        const currentMovie = this.chatService.getCurrentMovie();
+        if (currentMovie) {
+          const infoType = this.chatService.detectInfoType(this.inputMessage);
+          if (infoType !== 'general') {
+            const personalizedMessage = this.chatService.getPersonalizedMovieMessage(currentMovie, infoType);
+            this.messages.push({ role: 'bot', content: personalizedMessage });
+          }
+          this.messages.push({ role: 'bot', content: '¿Quieres saber algo más sobre esta película o prefieres que te hable de otra?' });
+        }
       },
       (error) => {
         console.error('Error al enviar mensaje:', error);
