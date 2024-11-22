@@ -20,6 +20,7 @@ export class ChatService {
   private apiUrl = 'http://localhost:3000/api';
   private userName: string = '';
   private currentMovie: Movie | null = null;
+  private movieContext: string | null = null;
 
   constructor(private http: HttpClient) { }
 
@@ -38,6 +39,10 @@ export class ChatService {
   setCurrentMovie(movie: Movie) {
     this.currentMovie = movie;
   }
+  
+  setMovieContext(context: string) {
+    this.movieContext = context;
+  }
 
   extractName(message: string): string {
     const commonWords = ['me', 'llamo', 'soy', 'mi', 'nombre', 'es', 'hola', 'saludos'];
@@ -51,13 +56,16 @@ export class ChatService {
     if (isFirstMessage) {
       const extractedName = this.extractName(message);
       this.setUserName(extractedName);
-      return of({ message: `¡Encantado de conocerte, ${extractedName}! ¿En qué puedo ayudarte hoy con respecto a películas navideñas?` });
+      return of({ message: `¡Hola ${extractedName}! Encantado de conocerte. ¿En qué puedo ayudarte hoy con respecto a películas navideñas?` });
     }
 
-    return this.http.post<{ message: string, movie?: Movie }>(`${this.apiUrl}/chat`, { message }).pipe(
+    return this.http.post<{ message: string, movie?: Movie, movieContext?: string }>(`${this.apiUrl}/chat`, { message }).pipe(
       map(response => {
         if (response.movie) {
           this.setCurrentMovie(response.movie);
+        }
+        if (response.movieContext) {
+          this.setMovieContext(response.movieContext);
         }
         return response;
       }),
@@ -79,36 +87,42 @@ export class ChatService {
   }
 
   getPersonalizedMovieMessage(movie: Movie, infoType: string): string {
-    switch (infoType.toLowerCase()) {
+    const userName = this.getUserName();
+    switch (infoType) {
       case 'año':
-        return `¡Viajemos en el tiempo! "${movie.titulo}" se estrenó en ${movie.anio}. ¿Te imaginas cómo era el mundo en ese entonces?`;
+        return `${userName}, "${movie.titulo}" se estrenó en ${movie.anio}. ¿Sabías que en ese año también [inserta un hecho interesante]?`;
       case 'director':
-        return `¡Aplausos para el genio detrás de la cámara! "${movie.titulo}" fue dirigida por el talentoso ${movie.director}. ¿Has visto otras películas suyas?`;
+        return `${userName}, "${movie.titulo}" fue dirigida por ${movie.director}. ¿Has visto otras películas de este director?`;
       case 'calificación':
-        return `¡Momento de críticos! "${movie.titulo}" tiene una calificación de ${movie.calificacion} sobre 10. ¿Estás de acuerdo con esta puntuación?`;
+        return `${userName}, "${movie.titulo}" tiene una calificación de ${movie.calificacion} sobre 10. ¿Estás de acuerdo con esta puntuación?`;
       case 'género':
-        return `¡Prepárate para sumergirte en un mundo mágico! "${movie.titulo}" pertenece al subgénero de ${movie.subgenero}. ¿Es tu tipo favorito de película navideña?`;
+        return `${userName}, "${movie.titulo}" pertenece al subgénero de ${movie.subgenero}. ¿Es tu tipo favorito de película navideña?`;
       case 'trama':
-        return `¡Agárrate a tu asiento! La trama de "${movie.titulo}" es: ${movie.descripcion} ¿No te dan ganas de verla ahora mismo?`;
+        return `${userName}, la trama de "${movie.titulo}" es: ${movie.descripcion} ¿Qué parte te parece más interesante?`;
       default:
-        return `"${movie.titulo}" es una película fascinante. ¿Qué más te gustaría saber sobre ella?`;
+        return `${userName}, "${movie.titulo}" es una película fascinante. ¿Qué más te gustaría saber sobre ella? Puedes preguntarme sobre el año, director, calificación, género o trama.`;
     }
   }
 
   detectInfoType(message: string): string {
-    const lowerMessage = message.toLowerCase();
-    const cleanMessage = lowerMessage.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()0-9]/g, "");
-    if (cleanMessage.includes('año') || cleanMessage.includes('cuando') || cleanMessage.includes('estreno')) {
-      return 'año';
-    } else if (cleanMessage.includes('director') || cleanMessage.includes('dirigió') || cleanMessage.includes('dirigio')) {
-      return 'director';
-    } else if (cleanMessage.includes('calificación') || cleanMessage.includes('calificacion') || cleanMessage.includes('puntaje') || cleanMessage.includes('rating')) {
-      return 'calificación';
-    } else if (cleanMessage.includes('género') || cleanMessage.includes('genero') || cleanMessage.includes('tipo de película') || cleanMessage.includes('tipo de pelicula')) {
-      return 'género';
-    } else if (cleanMessage.includes('trama') || cleanMessage.includes('de qué trata') || cleanMessage.includes('de que trata') || cleanMessage.includes('argumento') || cleanMessage.includes('historia')) {
-      return 'trama';
+    const cleanMessage = message.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()0-9]/g, "").replace(/[¿¡]/g, "");
+    const lowerMessage = cleanMessage.toLowerCase();
+    const words = lowerMessage.split(/\s+/);
+  
+    const infoTypes = {
+      año: ['año', 'cuando', 'estreno', 'estrenó', 'lanzó', 'salió', 'fecha'],
+      director: ['director', 'dirigió', 'realizó', 'filmó', 'creador'],
+      calificación: ['calificación', 'puntaje', 'rating', 'puntuación', 'nota', 'valoración'],
+      género: ['género', 'tipo', 'categoría', 'estilo'],
+      trama: ['trama', 'argumento', 'historia', 'sinopsis', 'resumen', 'de qué trata', 'de que va']
+    };
+  
+    for (const [type, keywords] of Object.entries(infoTypes)) {
+      if (keywords.some(keyword => words.includes(keyword))) {
+        return type;
+      }
     }
+  
     return 'general';
   }
 }

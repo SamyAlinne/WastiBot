@@ -77,17 +77,16 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   sendMessage() {
     if (this.inputMessage.trim() === '') return;
-
+  
     this.messages.push({ role: 'user', content: this.inputMessage });
-
+  
     this.chatService.sendMessage(this.inputMessage, this.isFirstMessage).subscribe(
       (response) => {
         this.messages.push({ role: 'bot', content: response.message });
         if (this.isFirstMessage) {
           this.isFirstMessage = false;
         }
-        this.scrollToBottom();
-
+  
         const currentMovie = this.chatService.getCurrentMovie();
         if (currentMovie) {
           const infoType = this.chatService.detectInfoType(this.inputMessage);
@@ -95,8 +94,9 @@ export class AppComponent implements OnInit, AfterViewChecked {
             const personalizedMessage = this.chatService.getPersonalizedMovieMessage(currentMovie, infoType);
             this.messages.push({ role: 'bot', content: personalizedMessage });
           }
-          this.messages.push({ role: 'bot', content: '¿Quieres saber algo más sobre esta película o prefieres que te hable de otra?' });
         }
+  
+        this.scrollToBottom();
       },
       (error) => {
         console.error('Error al enviar mensaje:', error);
@@ -104,7 +104,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
         this.scrollToBottom();
       }
     );
-
+  
     this.inputMessage = '';
   }
 
