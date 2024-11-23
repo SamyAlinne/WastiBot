@@ -1072,6 +1072,7 @@ section,
     border-radius: 8px;
     filter: brightness(1.1);
     animation: borderColorAnimation 2s infinite; /* Aplicamos la animación */
+    transition: all 0.6s ease-out;
   }
 
     @keyframes borderColorAnimation {
@@ -1222,8 +1223,6 @@ section,
               0px 0px 100px rgba(208, 149, 0, 0.7),
               0px 0px 100px rgba(165, 118, 0, 0.7);
 }
-
-
 /*--------------------------------------------------------------
   # Boostrap Imitation Classes
   --------------------------------------------------------------*/
