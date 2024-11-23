@@ -613,7 +613,7 @@
 }
 
 #snowflakes::after,
-snowflakes2::after  {
+snowflakes2::after {
   animation-delay: 1s; /* Para mayor variación */
 }
 
@@ -639,41 +639,41 @@ snowflakes2::after  {
   width: 10px;
   height: 10px;
   background: transparent;
-  box-shadow:   0 0 2px rgba(255, 255, 255, 0.8), 
-  0 -50px 3px rgba(221, 232, 237, 0.7),
-  -100px -200px 2px rgba(255, 255, 255, 0.6),
-  200px -300px 4px rgba(221, 232, 237, 0.9),
-  400px -150px 1px rgba(255, 255, 255, 0.5),
-  -200px -400px 3px rgba(221, 232, 237, 0.8),
-  150px -600px 4px rgba(255, 255, 255, 0.7),
-  -300px -50px 2px rgba(221, 232, 237, 0.6),
-  300px -200px 1px rgba(255, 255, 255, 0.4),
-  100px -700px 3px rgba(221, 232, 237, 0.8),
-  -400px -250px 2px rgba(255, 255, 255, 0.6),
-  500px -500px 4px rgba(221, 232, 237, 0.9),
-  -150px -800px 3px rgba(255, 255, 255, 0.7),
-  250px -1000px 4px rgba(221, 232, 237, 0.5),
-  -500px -900px 1px rgba(255, 255, 255, 0.8),
-  350px -1100px 2px rgba(221, 232, 237, 0.6),
-  -250px -1200px 3px rgba(255, 255, 255, 0.4),
-  600px -50px 3px rgba(221, 232, 237, 0.7),
-  -350px -500px 1px rgba(255, 255, 255, 0.6),
-  450px -900px 4px rgba(221, 232, 237, 0.8),
-  -200px -800px 2px rgba(255, 255, 255, 0.5),
-  550px -1100px 3px rgba(221, 232, 237, 0.7),
-  -100px -1300px 1px rgba(255, 255, 255, 0.6),
-  400px -1500px 3px rgba(221, 232, 237, 0.8),
-  -150px -1700px 2px rgba(255, 255, 255, 0.5),
-  600px -1800px 4px rgba(221, 232, 237, 0.6),
-  -300px -1900px 3px rgba(255, 255, 255, 0.7),
-  200px -2100px 2px rgba(221, 232, 237, 0.5),
-  -500px -2200px 1px rgba(255, 255, 255, 0.8),
-  100px -2500px 2px rgba(255, 255, 255, 0.8),
-  -150px -2200px 3px rgba(221, 232, 237, 0.7),
-  300px -2700px 1px rgba(221, 232, 237, 0.6),
-  -200px -2500px 3px rgba(255, 255, 255, 0.5),
-  500px -3000px 2px rgba(221, 232, 237, 0.6),
-  -100px -3100px 1px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.8),
+    0 -50px 3px rgba(221, 232, 237, 0.7),
+    -100px -200px 2px rgba(255, 255, 255, 0.6),
+    200px -300px 4px rgba(221, 232, 237, 0.9),
+    400px -150px 1px rgba(255, 255, 255, 0.5),
+    -200px -400px 3px rgba(221, 232, 237, 0.8),
+    150px -600px 4px rgba(255, 255, 255, 0.7),
+    -300px -50px 2px rgba(221, 232, 237, 0.6),
+    300px -200px 1px rgba(255, 255, 255, 0.4),
+    100px -700px 3px rgba(221, 232, 237, 0.8),
+    -400px -250px 2px rgba(255, 255, 255, 0.6),
+    500px -500px 4px rgba(221, 232, 237, 0.9),
+    -150px -800px 3px rgba(255, 255, 255, 0.7),
+    250px -1000px 4px rgba(221, 232, 237, 0.5),
+    -500px -900px 1px rgba(255, 255, 255, 0.8),
+    350px -1100px 2px rgba(221, 232, 237, 0.6),
+    -250px -1200px 3px rgba(255, 255, 255, 0.4),
+    600px -50px 3px rgba(221, 232, 237, 0.7),
+    -350px -500px 1px rgba(255, 255, 255, 0.6),
+    450px -900px 4px rgba(221, 232, 237, 0.8),
+    -200px -800px 2px rgba(255, 255, 255, 0.5),
+    550px -1100px 3px rgba(221, 232, 237, 0.7),
+    -100px -1300px 1px rgba(255, 255, 255, 0.6),
+    400px -1500px 3px rgba(221, 232, 237, 0.8),
+    -150px -1700px 2px rgba(255, 255, 255, 0.5),
+    600px -1800px 4px rgba(221, 232, 237, 0.6),
+    -300px -1900px 3px rgba(255, 255, 255, 0.7),
+    200px -2100px 2px rgba(221, 232, 237, 0.5),
+    -500px -2200px 1px rgba(255, 255, 255, 0.8),
+    100px -2500px 2px rgba(255, 255, 255, 0.8),
+    -150px -2200px 3px rgba(221, 232, 237, 0.7),
+    300px -2700px 1px rgba(221, 232, 237, 0.6),
+    -200px -2500px 3px rgba(255, 255, 255, 0.5),
+    500px -3000px 2px rgba(221, 232, 237, 0.6),
+    -100px -3100px 1px rgba(255, 255, 255, 0.4);
   animation: snowfall2 5s linear infinite;
 }
 
@@ -702,22 +702,22 @@ snowflakes2::after  {
   width: 10px;
   height: 10px;
   background: transparent;
-  box-shadow:   0 0 3px rgba(255, 255, 255, 0.9), 
-  -150px -60px 2px rgba(221, 232, 237, 0.8),
-  100px -180px 3px rgba(255, 255, 255, 0.7),
-  -250px -300px 4px rgba(221, 232, 237, 0.9),
-  350px -450px 1px rgba(255, 255, 255, 0.5),
-  -400px -500px 2px rgba(221, 232, 237, 0.6),
-  200px -600px 4px rgba(255, 255, 255, 0.8),
-  -50px -700px 3px rgba(221, 232, 237, 0.7),
-  450px -800px 2px rgba(255, 255, 255, 0.5),
-  -300px -900px 4px rgba(221, 232, 237, 0.9),
-  100px -1000px 2px rgba(255, 255, 255, 0.6),
-  -150px -1100px 3px rgba(255, 255, 255, 0.4),
-  500px -1200px 1px rgba(221, 232, 237, 0.7),
-  -250px -1300px 4px rgba(255, 255, 255, 0.8),
-  300px -1400px 2px rgba(221, 232, 237, 0.5),
-  -450px -1500px 3px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.9),
+    -150px -60px 2px rgba(221, 232, 237, 0.8),
+    100px -180px 3px rgba(255, 255, 255, 0.7),
+    -250px -300px 4px rgba(221, 232, 237, 0.9),
+    350px -450px 1px rgba(255, 255, 255, 0.5),
+    -400px -500px 2px rgba(221, 232, 237, 0.6),
+    200px -600px 4px rgba(255, 255, 255, 0.8),
+    -50px -700px 3px rgba(221, 232, 237, 0.7),
+    450px -800px 2px rgba(255, 255, 255, 0.5),
+    -300px -900px 4px rgba(221, 232, 237, 0.9),
+    100px -1000px 2px rgba(255, 255, 255, 0.6),
+    -150px -1100px 3px rgba(255, 255, 255, 0.4),
+    500px -1200px 1px rgba(221, 232, 237, 0.7),
+    -250px -1300px 4px rgba(255, 255, 255, 0.8),
+    300px -1400px 2px rgba(221, 232, 237, 0.5),
+    -450px -1500px 3px rgba(255, 255, 255, 0.6);
   animation: snowfall3 7s ease-in-out infinite;
 }
 
@@ -735,7 +735,6 @@ snowflakes2::after  {
     opacity: 0.4;
   }
 }
-
 
 /*--------------------------------------------------------------
 # Global Page Titles & Breadcrumbs
@@ -889,7 +888,7 @@ section,
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  z-index: 99999;
+  z-index: 1000;
 }
 
 .nav-bar,
@@ -932,8 +931,8 @@ section,
 
 .message-wrapper {
   display: flex;
-  align-items: flex-start; 
-  gap: 10px; 
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .bot-message {
@@ -947,9 +946,9 @@ section,
 .wastiFoto {
   border: 4px solid var(--amarillo-oscuro);
   height: 50px;
-  width: 50px; 
+  width: 50px;
   border-radius: 50%;
-  flex-shrink: 0; 
+  flex-shrink: 0;
   background-color: var(--background-color);
 }
 
@@ -974,7 +973,6 @@ section,
   background-color: var(--background-message-sender);
   border-radius: 10px 10px 0 10px;
 }
-
 
 .input-container {
   display: flex;
@@ -1055,6 +1053,176 @@ section,
     border-radius: 0.8rem;
   }
 }
+
+/*--------------------------------------------------------------
+  # Confirmation Card
+  --------------------------------------------------------------*/ 
+  .cardContainer {
+    width: auto;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--contrast-color);
+    padding: 20px;
+    border: 6px solid var(--amarillo-oscuro); /* Color inicial */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    border-radius: 8px;
+    filter: brightness(1.1);
+    animation: borderColorAnimation 2s infinite; /* Aplicamos la animación */
+  }
+
+    @keyframes borderColorAnimation {
+    0% {
+      border-color: var(--amarillo-oscuro);
+    }
+    33% {
+      border-color: var(--oro-highlight);
+    }
+    66% {
+      border-color: var(--oro-shadow);
+    }
+    100% {
+      border-color: var(--amarillo-oscuro);
+    }
+  }
+  
+
+.cardContainer p {
+  line-height: 1.2;
+}
+
+.card {
+  width: 300px;
+  height: auto;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(179, 194, 201, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  gap: 5px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.062);
+  border-radius: 8px;
+}
+
+.cookie {
+  margin-top: 30px;
+  width: 100px;
+}
+
+.cookieHeading {
+  font-size: 38px;
+  color: var(--amarillo-oscuro);
+  font-weight: 800;
+  padding: 5px 16px;
+  font-family: var(--christmas-font);
+  border-radius: 8px;
+  margin: 0;
+  font-weight: 900;
+}
+
+.cookieDescription {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--contrast-color);
+  font-family: var(--default-font);
+  margin-bottom: 15px;
+  padding: 5px 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.declineButton:focus {
+  border: 1px solid var(--focus-color);
+  outline: none;
+  box-shadow: inset 0px 0px 10px rgba(118, 153, 173, 0.5),
+    inset 0px 0px 10px rgba(120, 188, 228, 0.5),
+    0px 0px 100px rgba(72, 187, 254, 0.5), 0px 0px 100px rgba(27, 171, 255, 0.5);
+}
+
+.declineButton {
+  flex-basis: 25%;
+  padding: 10px 20px;
+  background: linear-gradient(
+    150deg,
+    rgba(34, 61, 70, 1) 0%, /* Variación más clara de #223d46 */
+    rgba(17, 43, 51, 1) 100% /* Variación más oscura de #223d46 */
+  );
+  box-shadow: 0px 0px 5px rgba(34, 61, 70, 0.5), /* Sombra basada en el color principal */
+              0px 0px 10px rgba(17, 43, 51, 0.5);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--default-color); /* Texto en el color configurado */
+  border: none;
+  width: 100%;
+  border-radius: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.declineButton:hover {
+  background: linear-gradient(
+    150deg,
+    rgba(51, 77, 87, 1) 50%, /* Variación más clara al pasar el ratón */
+    rgba(25, 54, 64, 1) 100% /* Variación más oscura al pasar el ratón */
+  );
+  box-shadow: 0px 0px 15px rgba(34, 61, 70, 0.7), /* Efecto de sombra intensificado */
+              0px 0px 20px rgba(17, 43, 51, 0.7);
+}
+
+.acceptButton {
+  flex-basis: 25%;
+  padding: 10px 20px;
+  background: linear-gradient(
+    150deg,
+    rgba(208, 149, 0, 1) 0%, /* Variación más clara de #d09500 */
+    rgba(165, 118, 0, 1) 100% /* Variación más oscura de #d09500 */
+  );
+  box-shadow: 0px 0px 5px rgba(208, 149, 0, 0.5), /* Sombra basada en el color principal */
+              0px 0px 10px rgba(165, 118, 0, 0.5);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--nav-text-color); /* Texto en el color configurado */
+  border: none;
+  width: 100%;
+  border-radius: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.acceptButton:hover {
+  background: linear-gradient(
+    150deg,
+    rgba(229, 162, 20, 1) 50%, /* Variación más clara al pasar el ratón */
+    rgba(190, 133, 10, 1) 100% /* Variación más oscura al pasar el ratón */
+  );
+  box-shadow: 0px 0px 15px rgba(208, 149, 0, 0.7), /* Efecto de sombra intensificado */
+              0px 0px 20px rgba(165, 118, 0, 0.7);
+}
+
+.acceptButton:focus {
+  border: 1px solid var(--focus-color); /* Mantén el enfoque con el color de enfoque */
+  outline: none;
+  box-shadow: inset 0px 0px 10px rgba(208, 149, 0, 0.5),
+              inset 0px 0px 10px rgba(165, 118, 0, 0.5),
+              0px 0px 100px rgba(208, 149, 0, 0.7),
+              0px 0px 100px rgba(165, 118, 0, 0.7);
+}
+
 
 /*--------------------------------------------------------------
   # Boostrap Imitation Classes

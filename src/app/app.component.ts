@@ -47,7 +47,6 @@ export class AppComponent implements OnInit, AfterViewChecked {
     });
   }
 
-  
   messages: { role: string, content: string }[] = [];
   inputMessage = '';
   topMovies: any[] = [];
@@ -117,15 +116,43 @@ export class AppComponent implements OnInit, AfterViewChecked {
   }
 
   confirmNewConversation(event: Event): void {
-    // Previene la navegación por defecto
+    // Previene la acción por defecto del clic
     event.preventDefault();
   
-    // Muestra una ventana de confirmación
-    const userConfirmed = confirm('Perderá la conversación actual, ¿seguro que desea continuar?');
-    if (userConfirmed) {
+    // Muestra el cuadro de confirmación
+    const confirmationCard = document.querySelector('#confirmationCard') as HTMLElement;
+    if (confirmationCard) {
+      confirmationCard.style.display = 'block'; // Muestra la ventana
+    }
+  
+    // Configura los botones
+    const acceptButton = document.querySelector('#acceptButton') as HTMLButtonElement;
+    const declineButton = document.querySelector('#declineButton') as HTMLButtonElement;
+  
+    // Configura las acciones para "Aceptar"
+    acceptButton.onclick = () => {
+      // Oculta la ventana de confirmación
+      if (confirmationCard) {
+        confirmationCard.style.display = 'none';
+      }
+  
+      // Elimina la animación inicial
+      const animacionInicial = document.querySelector('#animacionInicial');
+      if (animacionInicial) {
+        animacionInicial.remove();
+      }
+  
       // Recarga la página
       window.location.reload();
-    }
+    };
+  
+    // Configura las acciones para "Cancelar"
+    declineButton.onclick = () => {
+      if (confirmationCard) {
+        confirmationCard.style.display = 'none'; // Oculta la ventana
+      }
+    };
   }
+  
   
 }
