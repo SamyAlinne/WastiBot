@@ -115,4 +115,17 @@ export class AppComponent implements OnInit, AfterViewChecked {
       console.error('Error al hacer scroll:', err);
     }
   }
+
+  confirmNewConversation(event: Event): void {
+    // Previene la navegación por defecto
+    event.preventDefault();
+  
+    // Muestra una ventana de confirmación
+    const userConfirmed = confirm('Perderá la conversación actual, ¿seguro que desea continuar?');
+    if (userConfirmed) {
+      // Recarga la página
+      window.location.reload();
+    }
+  }
+  
 }
