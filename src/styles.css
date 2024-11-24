@@ -13,10 +13,10 @@
   
   :root {
     --background-color: rgb(244, 249, 251);
-    --default-color: #fff; 
+    --default-color: #f8f8f8; 
     --heading-color: #283d50; 
-    --accent-color: rgb(179,194,201);
-    --surface-color: #ffffff; 
+    --accent-color: #7f5b00ea; 
+    --b-color: #ececec; 
     --contrast-color: #223d46; 
     --footer-color: rgb(34,61,70);
     --focus-color:rgb(244, 249, 251);
@@ -29,6 +29,7 @@
   
   :root {
     --nav-text-color: #594000; 
+    --nav-text-color-lighter: #8e6601d1; 
     --nav-hover-text-color: #ffffff; 
     --nav-fill-color: #594000; 
     --nav-hover-fill-color:#ffffff; 
@@ -54,11 +55,16 @@
     color: var(--accent-color);
     text-decoration: none;
     transition: 0.3s;
+    font-weight: 700;
   }
   
   a:hover {
     color: color-mix(in srgb, var(--accent-color), transparent 25%);
     text-decoration: none;
+  }
+
+  b {
+    color: var(--b-color);
   }
   
   h1,

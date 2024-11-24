@@ -4,6 +4,9 @@ import { ChatService } from './chat.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+
 
 @Component({
   selector: 'app-root',
@@ -25,6 +28,9 @@ export class AppComponent implements OnInit, AfterViewChecked {
     const animacionInicial = document.querySelector('#animacionInicial');
     const mainContent = document.querySelector('#main-content') as HTMLElement; // Convertimos explícitamente a HTMLElement
 
+/*--------------------------------------------------------------
+#                       ANIMACIÓN INICIAL
+--------------------------------------------------------------*/
     window.addEventListener('load', () => {
       if (preloader) {
         preloader.remove(); // Elimina el preloader una vez cargada la página
@@ -47,13 +53,17 @@ export class AppComponent implements OnInit, AfterViewChecked {
     });
   }
 
-  messages: { role: string, content: string }[] = [];
+/*--------------------------------------------------------------
+#                     INICIALIZAR MENSAJES
+--------------------------------------------------------------*/
+
+  messages: { role: string, content: SafeHtml }[] = [];
   inputMessage = '';
   topMovies: any[] = [];
   userName = '';
   isFirstMessage = true;
 
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService, private sanitizer: DomSanitizer) {}
 
   ngAfterViewChecked() {
     this.scrollToBottom();
@@ -77,11 +87,14 @@ export class AppComponent implements OnInit, AfterViewChecked {
   sendMessage() {
     if (this.inputMessage.trim() === '') return;
   
-    this.messages.push({ role: 'user', content: this.inputMessage });
+    // Mensaje del usuario
+    this.messages.push({ role: 'user', content: this.sanitizer.bypassSecurityTrustHtml(this.inputMessage) });
   
     this.chatService.sendMessage(this.inputMessage, this.isFirstMessage).subscribe(
       (response) => {
-        this.messages.push({ role: 'bot', content: response.message });
+        // Mensaje del bot con HTML sanitizado
+        this.messages.push({ role: 'bot', content: this.sanitizer.bypassSecurityTrustHtml(response.message) });
+  
         if (this.isFirstMessage) {
           this.isFirstMessage = false;
         }
@@ -91,7 +104,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
           const infoType = this.chatService.detectInfoType(this.inputMessage);
           if (infoType !== 'general') {
             const personalizedMessage = this.chatService.getPersonalizedMovieMessage(currentMovie, infoType);
-            this.messages.push({ role: 'bot', content: personalizedMessage });
+            this.messages.push({ role: 'bot', content: this.sanitizer.bypassSecurityTrustHtml(personalizedMessage) });
           }
         }
   
@@ -99,13 +112,17 @@ export class AppComponent implements OnInit, AfterViewChecked {
       },
       (error) => {
         console.error('Error al enviar mensaje:', error);
-        this.messages.push({ role: 'bot', content: 'Lo siento, ha ocurrido un error. Por favor, intenta de nuevo.' });
+        this.messages.push({ role: 'bot', content: this.sanitizer.bypassSecurityTrustHtml('Lo siento, ha ocurrido un error. Por favor, intenta de nuevo.') });
         this.scrollToBottom();
       }
     );
   
     this.inputMessage = '';
   }
+
+/*--------------------------------------------------------------
+#                      AUTO SCROLL
+--------------------------------------------------------------*/
 
   scrollToBottom(): void {
     try {
@@ -115,6 +132,9 @@ export class AppComponent implements OnInit, AfterViewChecked {
     }
   }
 
+/*--------------------------------------------------------------
+#                VENTANA DE NUEVA CONVERSACIÓN
+--------------------------------------------------------------*/
   confirmNewConversation(event: Event): void {
     // Previene la acción por defecto del clic
     event.preventDefault();

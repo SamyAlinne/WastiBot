@@ -50,7 +50,7 @@
                 Tu navegador no soporta SVG.
               </object>
               <div class="message" [ngClass]="{'sender': message.role === 'bot', 'receiver': message.role === 'user'}">
-                <p>{{ message.content }}</p>
+                <p [innerHTML]="message.content"></p>
               </div>
             </div>
           </ng-container>
