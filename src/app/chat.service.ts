@@ -74,6 +74,7 @@ export class ChatService {
       '¡hola!',
       '¡holis!',
       'eres',
+      'wasti'
     ];
     const cleanMessage = message.replace(
       /[.,\/#¡!¿?$%\^&\*;:{}=\-_`~()0-9]/g,

@@ -70,7 +70,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   }
 
   initializeChat() {
-    this.messages.push({ role: 'bot', content: '¡Hola! Soy WastiBot. ¿Cómo te llamas?' });
+    this.messages.push({ role: 'bot', content: '¡Hola! Me llamo <b>Wasti</b>. Tu confiable amigo para estas navidades. <br> ¿Cómo te llamas? c:' });
   }
 
   loadTopMovies() {
