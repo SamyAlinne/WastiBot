@@ -18,7 +18,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit, AfterViewChecked {
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
-
+  @ViewChild('backgroundMusic') backgroundMusic!: ElementRef<HTMLAudioElement>;
   title = 'WastiBot';
 
   ngOnInit() {
@@ -51,6 +51,8 @@ export class AppComponent implements OnInit, AfterViewChecked {
         }, 4000); // Duración de la animación inicial
       }
     });
+
+    this.initializeBackgroundMusic();
   }
 
 /*--------------------------------------------------------------
@@ -172,5 +174,14 @@ export class AppComponent implements OnInit, AfterViewChecked {
         confirmationCard.style.display = 'none'; // Oculta la ventana
       }
     };
+  }
+
+/*--------------------------------------------------------------
+#                MÚSICA DE FONDO
+--------------------------------------------------------------*/
+  initializeBackgroundMusic() {
+    const audioElement = this.backgroundMusic.nativeElement;
+    audioElement.volume = 0.1;
+    audioElement.play().catch(err => console.error('Error al reproducir música:', err));
   }
 }

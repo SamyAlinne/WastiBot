@@ -1004,7 +1004,7 @@ section,
 .input-container input:focus {
   border: 1px solid var(--focus-color);
   outline: none;
-  box-shadow: inset 0px 0px 10px rgba(118, 153, 173, 0.5),
+  box-shadow: inset 0px 0px 6px rgba(118, 153, 173, 0.5),
     inset 0px 0px 10px rgba(120, 188, 228, 0.5),
     0px 0px 100px rgba(72, 187, 254, 0.5), 0px 0px 100px rgba(27, 171, 255, 0.5);
 }
