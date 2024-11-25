@@ -21,8 +21,18 @@ export class ChatService {
   private userName: string = '';
   private currentMovie: Movie | null = null;
   private movieContext: string | null = null;
+  private badWords: string[] = []; 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loadBadWords();
+   }
+
+    // Cargar las malas palabras desde el archivo JSON
+    private loadBadWords() {
+    this.http.get<{ badWords: string[] }>('/assets/bad-words.json').subscribe(data => {
+    this.badWords = data.badWords;  // Almacenamos las malas palabras
+    });
+  }
 
   setUserName(name: string) {
     this.userName = name;
@@ -45,10 +55,15 @@ export class ChatService {
   }
 
   extractName(message: string): string {
-    const commonWords = ['me', 'llamo', 'soy', 'mi', 'nombre', 'es', 'hola', 'saludos'];
-    const cleanMessage = message.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()0-9]/g, "");
+    const commonWords = ['me', 'llamo', 'soy', 'mi', 'nombre', 'es', 'hola', 'saludos', 'holi', 'holiwis', 'holis', 'buenas', 'wenas', '¡hola!', '¡holis!', 'eres'];
+    const badWords = [,];
+    const cleanMessage = message.replace(/[.,\/#¡!¿?$%\^&\*;:{}=\-_`~()0-9]/g, "");
     const words = cleanMessage.toLowerCase().split(/\s+/);
     const potentialName = words.find(word => !commonWords.includes(word) && word.length > 1);
+
+    if (potentialName && this.badWords.includes(potentialName.toLowerCase())) {
+      return 'WastiAmigo';  // Si es una mala palabra, se asigna el nombre WastiAmigo
+  }
     return potentialName ? potentialName.charAt(0).toUpperCase() + potentialName.slice(1) : '';
   }
 
@@ -56,8 +71,13 @@ export class ChatService {
     if (isFirstMessage) {
       const extractedName = this.extractName(message);
       this.setUserName(extractedName);
-      return of({ message: `¡Hola ${extractedName}! Encantado de conocerte. ¿En qué puedo ayudarte hoy con respecto a películas navideñas?` });
+      // Respuesta personalizada si el nombre es una mala palabra
+      if (extractedName === 'WastiAmigo') {
+        return of({ message: `Siento mucho que te llames así :c, pero lamentablemente mi Wasti programación no me permite ser malo, así que te llamaré WastiAmigo ;D. <br> <br> ¡Hola <b>WastiAmigo!</b> Encantado de conocerte. ¿Qué película navideña te gustaría descubrir hoy?` });
     }
+    // Respuesta estándar si el nombre es válido
+    return of({ message: `¡Hola <b>${extractedName}</b>! Encantado de conocerte. ¿Qué película navideña te gustaría descubrir hoy?` });
+}
 
     return this.http.post<{ message: string, movie?: Movie, movieContext?: string }>(`${this.apiUrl}/chat`, { message }).pipe(
       map(response => {

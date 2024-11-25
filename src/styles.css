@@ -65,6 +65,7 @@
 
   b {
     color: var(--b-color);
+    font-weight: 600;
   }
   
   h1,
