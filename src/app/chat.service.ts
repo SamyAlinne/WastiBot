@@ -120,7 +120,7 @@ export class ChatService {
 
       // Respuesta estándar si el nombre es válido
       return of({
-        message: `¡Hola <b>${extractedName}</b>! Encantado de conocerte. ¿Qué película navideña te gustaría descubrir hoy?`,
+        message: `¡Hola <b>${extractedName}</b>! Encantado de conocerte. ¿Quieres que te ayude a descubrir tu próxima película navideña favorita?`,
       });
     }
 
