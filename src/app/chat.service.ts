@@ -57,29 +57,8 @@ export class ChatService {
   }
 
   extractName(message: string): string {
-    const commonWords = [
-      'me',
-      'llamo',
-      'soy',
-      'mi',
-      'nombre',
-      'es',
-      'hola',
-      'saludos',
-      'holi',
-      'holiwis',
-      'holis',
-      'buenas',
-      'wenas',
-      '¡hola!',
-      '¡holis!',
-      'eres',
-      'wasti'
-    ];
-    const cleanMessage = message.replace(
-      /[.,\/#¡!¿?$%\^&\*;:{}=\-_`~()0-9]/g,
-      ''
-    );
+    const commonWords = [ 'me','llamo', 'soy','mi','nombre','es','hola','saludos','holi','holiwis','holis','buenas','wenas','¡hola!','¡holis!','eres','wasti', ];
+    const cleanMessage = message.replace(/[.,\/#¡!¿?$%\^&\*;:{}=\-_`~()0-9]/g,'');
     // Verificar si el mensaje está vacío
     if (!cleanMessage) {
       return 'Vacio';
@@ -191,24 +170,9 @@ export class ChatService {
     const infoTypes = {
       año: ['año', 'cuando', 'estreno', 'estrenó', 'lanzó', 'salió', 'fecha'],
       director: ['director', 'dirigió', 'realizó', 'filmó', 'creador'],
-      calificación: [
-        'calificación',
-        'puntaje',
-        'rating',
-        'puntuación',
-        'nota',
-        'valoración',
-      ],
+      calificación: ['calificación','puntaje','rating','puntuación','nota','valoración',],
       género: ['género', 'tipo', 'categoría', 'estilo'],
-      trama: [
-        'trama',
-        'argumento',
-        'historia',
-        'sinopsis',
-        'resumen',
-        'de qué trata',
-        'de que va',
-      ],
+      trama: ['trama','argumento','historia','sinopsis','resumen','de qué trata','de que va',],
     };
 
     for (const [type, keywords] of Object.entries(infoTypes)) {
