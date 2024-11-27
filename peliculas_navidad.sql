@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2024 a las 02:06:18
+-- Tiempo de generación: 27-11-2024 a las 06:37:39
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -52,7 +52,17 @@ INSERT INTO `peliculas` (`id`, `titulo`, `anio`, `director`, `calificacion`, `su
 (7, 'Love Actually', 2003, 'Richard Curtis', 7.6, 'Comedia romántica', 'Sigue las vidas de ocho parejas muy diferentes lidiando con sus vidas amorosas en varias historias vagamente interrelacionadas, todas ambientadas durante un frenético mes antes de Navidad en Londres, Inglaterra.', '1. Netflix: https://www.netflix.com/es/title/60031262?source=35\r\n2. Prime Video: https://www.primevideo.com/-/es/detail/Realmente-amor/0SKP19RX9AS7BWJKOJOAAXH81S'),
 (8, 'Santa Cláusula', 1994, 'John Pasquin', 6.5, 'Comedia familiar', 'Cuando un hombre hace caer accidentalmente a Santa de su tejado en Nochebuena, se encuentra mágicamente reclutado para tomar su lugar.', '1. Disney Plus: https://www.disneyplus.com/es-mx/movies/title/3JPPheWC0SH5\r\n2. Prime Video: https://www.primevideo.com/-/es/detail/Santa-Cl%C3%A1usula/0T64JK30Y7OI786ZC0HTHKT5P1\r\n3. Apple TV: https://tv.apple.com/mx/movie/santa-clausula/umc.cmc.4drvjmsf6vu1nhraowzehhoe5'),
 (9, 'El Grinch', 2000, 'Ron Howard', 6.2, 'Comedia fantástica', 'En las afueras de Villa Quién vive un Grinch verde que busca venganza y planea arruinar la Navidad para todos los ciudadanos del pueblo.', '1. Max (HBO): https://www.max.com/cl/es/movies/el-grinch/8a1dc5a5-353c-4a95-81b5-b3a0b574ced2\r\n2. Prime Video: https://www.primevideo.com/-/es/detail/El-Grinch/0SPE8HYYIGVBEBLIT6AQT3TNPL\r\n3. Apple TV: https://tv.apple.com/mx/movie/el-grinch/umc.cmc.5ulids6104abycr0xuxju4ee0'),
-(10, 'Pesadilla antes de Navidad', 1993, 'Henry Selick', 7.9, 'Animación musical', 'Jack Skellington, rey de la Ciudad de Halloween, descubre la Ciudad de la Navidad, pero sus intentos de llevar la Navidad a su hogar causan confusión.', '1. Disney Plus: https://www.disneyplus.com/es-es/movies/pesadilla-antes-de-navidad/5GjwOj5Rkpz2\r\n2. Rakuten TV: https://www.rakuten.tv/es/movies/pesadilla-antes-de-navidad\r\n3. Apple TV: https://tv.apple.com/es/movie/pesadilla-antes-de-navidad/umc.cmc.15sv1obrzlxhuf2xhjftbr6ab');
+(10, 'Pesadilla antes de Navidad', 1993, 'Henry Selick', 7.9, 'Animación musical', 'Jack Skellington, rey de la Ciudad de Halloween, descubre la Ciudad de la Navidad, pero sus intentos de llevar la Navidad a su hogar causan confusión.', '1. Disney Plus: https://www.disneyplus.com/es-es/movies/pesadilla-antes-de-navidad/5GjwOj5Rkpz2\r\n2. Rakuten TV: https://www.rakuten.tv/es/movies/pesadilla-antes-de-navidad\r\n3. Apple TV: https://tv.apple.com/es/movie/pesadilla-antes-de-navidad/umc.cmc.15sv1obrzlxhuf2xhjftbr6ab'),
+(11, 'Klaus', 2019, 'Sergio Pablos', 8.2, 'Animación familiar', 'Un cartero egoísta y un fabricante de juguetes solitario forjan una amistad improbable que trae alegría a un pueblo frío y oscuro.', '1. Netflix: https://www.netflix.com/mx/title/80183187'),
+(12, 'Un vecino con pocas luces', 2006, 'John Whitesell', 5.0, 'Comedia navideña', 'Dos vecinos compiten ferozmente para decorar sus casas con las luces navideñas más llamativas y así ganar un concurso.', '1. Disney Plus: https://www.disneyplus.com/es-mx/movies/un-vecino-con-pocas-luces/5NwtYUOmxcPa\r\n2. Netflix: https://www.netflix.com/mx/title/70052697'),
+(13, 'Crónicas de Navidad', 2018, 'Clay Kaytis', 7.0, 'Aventura familiar', 'Dos hermanos provocan un accidente que estropea el trineo de Santa Claus y deben salvar la Navidad con la ayuda del mismísimo Santa.', '1. Netflix: https://www.netflix.com/title/80199682'),
+(14, 'El regalo prometido', 1996, 'Brian Levant', 5.7, 'Comedia familiar', 'Un padre desesperado intenta conseguir el juguete más popular para su hijo en la víspera de Navidad, enfrentándose a una serie de desventuras cómicas.', '1. Disney Plus: https://www.disneyplus.com/es-mx/movies/el-regalo-prometido/6h1l5zuCJDiL\r\n2. Apple TV: https://tv.apple.com/mx/movie/el-regalo-prometido/umc.cmc.329bisnjs2zqfs4a57oqqra9o'),
+(15, 'Noche de paz', 2022, 'Tommy Wirkola', 6.7, 'Acción navideña', 'Un equipo de mercenarios secuestra a una familia adinerada en Nochebuena, pero Santa Claus llega para salvar el día de manera inesperada.', '1. Prime Video: https://www.primevideo.com/-/es/detail/0FW2U2MHIG2LGKASDD2RMN1H1K/ref=atv_dl_rdr?tag=just0a7-21\r\n2. Apple TV: https://tv.apple.com/es/movie/noche-de-paz/umc.cmc.zkxi6wwwzrpbx5ubnu1jsakd?at=1000l3V2&ct=justwatch_tv&itscg=30200&itsct=justwatch_tv&playableId=tvs.sbd.9001%3A1656146669'),
+(16, 'Cambio de princesa', 2018, 'Mike Rohl', 6.0, 'Romance navideño', 'Una pastelera de Chicago y una duquesa descubren que son idénticas y deciden intercambiar vidas durante la Navidad.', '1. Netflix: https://www.netflix.com/mx/title/80242926'),
+(17, 'Nochebuena en casa', 2022, 'Per-Olav Sørensen', 7.6, 'Comedia romántica', 'Siguiendo un reto familiar, Johanne, una enfermera, intenta encontrar a alguien para llevar a casa por Navidad en menos de 24 días.', '1. Netflix: https://www.netflix.com/mx/title/81083590'),
+(18, 'El Hombre que Inventó la Navidad', 2017, 'Bharat Nalluri', 7.0, 'Drama histórico', 'Relata cómo Charles Dickens escribió *Cuento de Navidad* tras superar bloqueos creativos y problemas personales.', '1. Prime Video: https://www.primevideo.com/detail?gti=amzn1.dv.gti.2cb92973-2b81-7e34-e88e-147d67cdb53a&linkCode=xm2&tag=just0a7-21'),
+(19, 'Navidad en 8 bits', 2021, 'Michael Dowse', 6.8, 'Comedia nostálgica', 'Un niño de los años 80 intenta conseguir una consola de videojuegos NES como regalo de Navidad, enfrentándose a una serie de desafíos cómicos.', '1. Prime Video: https://www.primevideo.com/-/es/detail/Navidad-en-8-Bits/0TA0R7RQZJDKQQM54NVKJE3G1E'),
+(20, 'Scrooge: Cuento de Navidad', 2022, 'Stephen Donnelly', 7.1, 'Animación musical', 'Una adaptación animada del clásico de Charles Dickens que sigue la redención de Ebenezer Scrooge en Nochebuena.', '1. Netflix: https://www.netflix.com/mx/title/81028225');
 
 --
 -- Índices para tablas volcadas
@@ -72,7 +82,7 @@ ALTER TABLE `peliculas`
 -- AUTO_INCREMENT de la tabla `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
