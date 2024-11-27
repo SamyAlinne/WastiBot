@@ -541,6 +541,42 @@
   }
 }
 
+/* Animación de los puntos */
+.typing-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 2px;
+  background-color: #ccc;
+  border-radius: 50%;
+  animation: typing 1.5s infinite;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes typing {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 /* Contenedor de copos de nieve */
 #snowflakes {
   position: absolute;
@@ -1004,9 +1040,9 @@ section,
 .input-container input:focus {
   border: 1px solid var(--focus-color);
   outline: none;
-  box-shadow: inset 0px 0px 6px rgba(118, 153, 173, 0.5),
+  box-shadow: inset 0px 0px 10px rgba(118, 153, 173, 0.5),
     inset 0px 0px 10px rgba(120, 188, 228, 0.5),
-    0px 0px 100px rgba(72, 187, 254, 0.5), 0px 0px 100px rgba(27, 171, 255, 0.5);
+    0px 0px 50px rgba(72, 187, 254, 0.5), 0px 0px 50px rgba(27, 171, 255, 0.5);
 }
 
 .input-container button {

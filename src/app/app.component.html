@@ -54,6 +54,10 @@
               </div>
             </div>
           </ng-container>
+          <!-- Animación de bot escribiendo -->
+            <div *ngIf="isBotTyping" class="typing-animation">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
         </div>
 
         <div class="sender-area">

@@ -61,6 +61,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   messages: { role: string, content: SafeHtml }[] = [];
   inputMessage = '';
+  isBotTyping = false;
   topMovies: any[] = [];
   userName = '';
   isFirstMessage = true;
@@ -87,40 +88,60 @@ export class AppComponent implements OnInit, AfterViewChecked {
   }
 
   sendMessage() {
-    if (this.inputMessage.trim() === '') return;
+    if (this.inputMessage.trim() === '') return; // Verifica si el mensaje está vacío antes de procesarlo
   
     // Mensaje del usuario
     this.messages.push({ role: 'user', content: this.sanitizer.bypassSecurityTrustHtml(this.inputMessage) });
   
-    this.chatService.sendMessage(this.inputMessage, this.isFirstMessage).subscribe(
-      (response) => {
-        // Mensaje del bot con HTML sanitizado
-        this.messages.push({ role: 'bot', content: this.sanitizer.bypassSecurityTrustHtml(response.message) });
+    // Mostrar la animación de "escribiendo..."
+    this.isBotTyping = true;
   
-        if (this.isFirstMessage) {
-          this.isFirstMessage = false;
-        }
+    // Guardar el mensaje antes de hacer la llamada
+    const messageToSend = this.inputMessage;
   
-        const currentMovie = this.chatService.getCurrentMovie();
-        if (currentMovie) {
-          const infoType = this.chatService.detectInfoType(this.inputMessage);
-          if (infoType !== 'general') {
-            const personalizedMessage = this.chatService.getPersonalizedMovieMessage(currentMovie, infoType);
-            this.messages.push({ role: 'bot', content: this.sanitizer.bypassSecurityTrustHtml(personalizedMessage) });
+    // Temporizador para que la animación dure 2 segundos antes de enviar la respuesta del bot
+    setTimeout(() => {
+      // Llamar al servicio para enviar el mensaje
+      this.chatService.sendMessage(messageToSend, this.isFirstMessage).subscribe(
+        (response) => {
+          // Detener la animación de "escribiendo..."
+          this.isBotTyping = false;
+  
+          // Mensaje del bot con HTML sanitizado
+          this.messages.push({ role: 'bot', content: this.sanitizer.bypassSecurityTrustHtml(response.message) });
+  
+          // Cambiar el estado de isFirstMessage si es necesario
+          if (this.isFirstMessage) {
+            this.isFirstMessage = false;
           }
+  
+          // Verificar si hay una película actual y generar mensaje personalizado
+          const currentMovie = this.chatService.getCurrentMovie();
+          if (currentMovie) {
+            const infoType = this.chatService.detectInfoType(messageToSend);
+            if (infoType !== 'general') {
+              const personalizedMessage = this.chatService.getPersonalizedMovieMessage(currentMovie, infoType);
+              this.messages.push({ role: 'bot', content: this.sanitizer.bypassSecurityTrustHtml(personalizedMessage) });
+            }
+          }
+  
+          // Desplazar la vista hacia el final de los mensajes
+          this.scrollToBottom();
+        },
+        (error) => {
+          console.error('Error al enviar mensaje:', error);
+          this.isBotTyping = false;
+          this.messages.push({ role: 'bot', content: this.sanitizer.bypassSecurityTrustHtml('Lo siento, ha ocurrido un error. Por favor, intenta de nuevo.') });
+          this.scrollToBottom();
         }
+      );
+    }, 2000); // 2 segundos para mostrar la animación antes de enviar la respuesta del bot
   
-        this.scrollToBottom();
-      },
-      (error) => {
-        console.error('Error al enviar mensaje:', error);
-        this.messages.push({ role: 'bot', content: this.sanitizer.bypassSecurityTrustHtml('Lo siento, ha ocurrido un error. Por favor, intenta de nuevo.') });
-        this.scrollToBottom();
-      }
-    );
-  
+    // Limpiar el campo de entrada para que no se solape con el siguiente mensaje
     this.inputMessage = '';
   }
+  
+  
 
 /*--------------------------------------------------------------
 #                      AUTO SCROLL
