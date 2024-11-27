@@ -146,17 +146,17 @@ export class ChatService {
     const userName = this.getUserName();
     switch (infoType) {
       case 'año':
-        return `${userName}, "${movie.titulo}" se estrenó en ${movie.anio}. ¿Sabías que en ese año también [inserta un hecho interesante]?`;
+        return ``;
       case 'director':
-        return `${userName}, "${movie.titulo}" fue dirigida por ${movie.director}. ¿Has visto otras películas de este director?`;
+        return ``;
       case 'calificación':
-        return `${userName}, "${movie.titulo}" tiene una calificación de ${movie.calificacion} sobre 10. ¿Estás de acuerdo con esta puntuación?`;
+        return ``;
       case 'género':
-        return `${userName}, "${movie.titulo}" pertenece al subgénero de ${movie.subgenero}. ¿Es tu tipo favorito de película navideña?`;
+        return ``;
       case 'trama':
-        return `${userName}, la trama de "${movie.titulo}" es: ${movie.descripcion} ¿Qué parte te parece más interesante?`;
+        return ``;
       default:
-        return `${userName}, "${movie.titulo}" es una película fascinante. ¿Qué más te gustaría saber sobre ella? Puedes preguntarme sobre el año, director, calificación, género o trama.`;
+        return ``;
     }
   }
 
@@ -168,11 +168,11 @@ export class ChatService {
     const words = lowerMessage.split(/\s+/);
 
     const infoTypes = {
-      año: ['año', 'cuando', 'estreno', 'estrenó', 'lanzó', 'salió', 'fecha'],
-      director: ['director', 'dirigió', 'realizó', 'filmó', 'creador'],
-      calificación: ['calificación','puntaje','rating','puntuación','nota','valoración',],
-      género: ['género', 'tipo', 'categoría', 'estilo'],
-      trama: ['trama','argumento','historia','sinopsis','resumen','de qué trata','de que va',],
+      año: [],
+      director: [],
+      calificación: [],
+      género: [],
+      trama: [],
     };
 
     for (const [type, keywords] of Object.entries(infoTypes)) {
@@ -182,5 +182,5 @@ export class ChatService {
     }
 
     return 'general';
-  }
+  }  
 }
